@@ -55,12 +55,20 @@ for i in range(len(t)-1):
 
 # Plot x vs y, x vs t, y vs t
 plt.plot(t, x)
+plt.xlabel('Time (Earth-years)')
+plt.ylabel('X-position (AU)')
+plt.title('Mercury\'s x-position vs time')
 plt.show()
 plt.plot(t, y)
+plt.xlabel('Time (Earth-years)')
+plt.ylabel('Y-position (AU)')
+plt.title('Mercury\'s y-position vs time')
 plt.show()
 plt.plot(x, y)
+plt.ylabel('X-position (AU)')
+plt.ylabel('Y-position (AU)')
+plt.title('Phase plot of Mercury\'s orbit')
 plt.show()
-
 
 
 
@@ -118,11 +126,21 @@ for i in range(len(t)-1):
     # Calculate position values    
     x[i+1], y[i+1] = position(x[i], y[i], v_x[i+1], v_y[i+1], a_x[i], a_y[i])
 
+ 
 # Plot x vs y, x vs t, y vs t
 plt.plot(t, x)
+plt.xlabel('Time (Earth-years)')
+plt.ylabel('X-position (AU)')
+plt.title('Mer\'s x-position vs time (with relativistic correction)')
 plt.show()
 plt.plot(t, y)
+plt.xlabel('Time (Earth-years)')
+plt.ylabel('Y-position (AU)')
+plt.title('Mercury\'s y-position vs time (with relativistic correction)')
 plt.show()
 plt.plot(x, y)
+plt.xlabel('X-position (AU)')
+plt.ylabel('Y-position (AU)')
+plt.title('Phase plot of Mercury\'s orbit (with relativistic correction)')
 plt.show()
 
