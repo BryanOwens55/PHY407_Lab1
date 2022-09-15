@@ -2,7 +2,7 @@
 Authors: Bryan Owens, Dharmik Patel
 Purpose: To time how long it takes to compute a dot product of two matrices 
          of size NxN using two different methods: three for-loops and numpys function
-Collaberation: Code was evenly created and edited by both lab partners
+Collaboration: Code was evenly created and edited by both lab partners
 '''
 # Imports
 import numpy as np
