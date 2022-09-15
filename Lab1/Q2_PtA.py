@@ -1,3 +1,5 @@
+# THIS FILES WILL CALCULATE THE THREE BODY PROBLEM WITH EARTH, JUPITER, AND THE SUN
+
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sc
