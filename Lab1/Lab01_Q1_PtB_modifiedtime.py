@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# This code implements an Euler-Cromer method to simulate the orbit of the Earth about the Sun in a system including Jupiter 
+# whose mass has been amended to 1 Solar Mass. The duration of the simulation is 5 Earth years (as opposed to 3 Earth years for the main code). The output of the code is plots of
+# x-position vs time, y-position vs time, and x-position vs y-position (phase) for Earth and Jupiter respectively. This code was written by
+# Dharmik Patel and Bryan Owens together. 
+#This code is identical to that for Part B except for the sole modification of orbit simulation duration. 
+
 # In[1]:
 
 
