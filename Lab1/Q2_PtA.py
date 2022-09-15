@@ -1,15 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sc
-
-
-# In[2]:
 
 
 # Set variables
@@ -19,47 +10,41 @@ M_sun = 1
 M_jupiter = M_sun/1000
 
 
-# In[3]:
-
-
-# Create parameters
+# Create arrays for t, positions (x,y), velocities (x,y), acceleration (x,y), for jupyter and earth cuased by sun
+# and an extra array for the acceration of earth due to jupiter
 
 t = np.arange(0,10,delta_t)
 
-x_earth = 1.0*t 
-y_earth = 0.0*t
+x_earth = 1.0*t  # AU
+y_earth = 0.0*t  # AU
 
-x_jupiter = 5.2*t
-y_jupiter = 0.0*t
+x_jupiter = 5.2*t  # AU
+y_jupiter = 0.0*t  # AU
 
-v_x_earth = 0.0*t
-v_y_earth = 6.18*t
+v_x_earth = 0.0*t  # AU/year
+v_y_earth = 6.18*t # AU/year
 
-v_x_jupiter = 0.0*t
-v_y_jupiter = 2.63*t
+v_x_jupiter = 0.0*t # AU/year
+v_y_jupiter = 2.63*t # AU/year
 
-a_x_earth = np.zeros(len(t)-1)
-a_x_earth_jup = np.zeros(len(t)-1)
-a_y_earth = np.zeros(len(t)-1)
-a_y_earth_jup = np.zeros(len(t)-1)
+a_x_earth = np.zeros(len(t)-1)  # AU/year^2
+a_x_earth_jup = np.zeros(len(t)-1)  # AU/year^2
+a_y_earth = np.zeros(len(t)-1)  # AU/year^2
+a_y_earth_jup = np.zeros(len(t)-1)  # AU/year^2
 
-a_x_jupiter = np.zeros(len(t)-1)
-a_y_jupiter = np.zeros(len(t)-1) 
+a_x_jupiter = np.zeros(len(t)-1)  # AU/year^2
+a_y_jupiter = np.zeros(len(t)-1)  # AU/year^2
 
 # Set up initial conditions
 
-x_earth[0] = 1.0
-y_earth[0] = 0.0
-x_jupiter[0] = 5.2
-y_jupiter[0] = 0.0
-v_x_earth[0] = 0.0
-v_y_earth[0] = 6.18
-v_x_jupiter[0] = 0.0
-v_y_jupiter[0] = 2.63
-
-
-
-# In[4]:
+x_earth[0] = 1.0  # AU
+y_earth[0] = 0.0  # AU
+x_jupiter[0] = 5.2  # AU
+y_jupiter[0] = 0.0  # AU
+v_x_earth[0] = 0.0  # AU/year
+v_y_earth[0] = 6.18  # AU/year
+v_x_jupiter[0] = 0.0  # AU/year
+v_y_jupiter[0] = 2.63  # AU/year
 
 
 # Calculate acceleration values
@@ -72,9 +57,6 @@ def acceleration(x, y, Mass):
     return a_x, a_y
 
 
-# In[5]:
-
-
 # Calculate velocity values
 def velocity(v_x_old, v_y_old, a_x, a_y):
     v_x_new = v_x_old + a_x * delta_t
@@ -82,17 +64,11 @@ def velocity(v_x_old, v_y_old, a_x, a_y):
     return v_x_new, v_y_new
 
 
-# In[6]:
-
-
 # Calculate position values
 def position(x_old, y_old, v_x, v_y, a_x, a_y):
     x_new = x_old + v_x*delta_t + a_x*(delta_t**2)
     y_new = y_old + v_y*delta_t + a_y*(delta_t**2)
     return x_new, y_new
-
-
-# In[7]:
 
 
 # Start for loop
@@ -121,12 +97,8 @@ for i in range(len(t)-1):
     # Calculate Earth velocity values
     v_x_earth[i+1], v_y_earth[i+1] = velocity(v_x_earth[i], v_y_earth[i], a_x_earth[i], a_y_earth[i])
      
-    # Calculate Earth position values    
+    # Calculate Earth position values from jupiter and sun's influence   
     x_earth[i+1], y_earth[i+1] = position(x_earth[i], y_earth[i], v_x_earth[i+1], v_y_earth[i+1], a_x_earth[i], a_y_earth[i])
-    
-
-
-# In[8]:
 
 
 # Plot x vs y, x vs t, y vs t
@@ -142,34 +114,3 @@ plt.show()
 plt.plot(x_earth, y_earth)
 plt.show()
 plt.plot(x_jupiter, y_jupiter)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
