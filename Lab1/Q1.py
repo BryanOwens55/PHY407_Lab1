@@ -1,3 +1,10 @@
+'''
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To simultate Mercury's orbit using Newtonian dynamics and using 
+         Newtonian dynamics with general relativity corrections.
+Collaberation: Code was evenly created and edited by both lab partners
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 
