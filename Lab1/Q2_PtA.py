@@ -1,4 +1,6 @@
-# THIS FILES WILL CALCULATE THE THREE BODY PROBLEM WITH EARTH, JUPITER, AND THE SUN
+# THIS FILE WILL CALCULATE THE THREE BODY PROBLEM WITH EARTH, JUPITER, AND THE SUN. The code uses an Euler-Cromer Method to calculate iterations
+# of velocity, acceleration, and position for Earth and Jupiter. The output is plots of x-position vs time, y-position vs time, and x-position
+# vs y-position (phase) for both Earth and Jupiter. The code was written by Dharmik Patel and Bryan Owens.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,7 +14,7 @@ M_sun = 1
 M_jupiter = M_sun/1000
 
 
-# Create arrays for t, positions (x,y), velocities (x,y), acceleration (x,y), for jupyter and earth cuased by sun
+# Create arrays for t, positions (x,y), velocities (x,y), acceleration (x,y), for Jupiter and Earth caused by the Sun
 # and an extra array for the acceration of earth due to jupiter
 
 t = np.arange(0,10,delta_t)
@@ -104,15 +106,19 @@ for i in range(len(t)-1):
 
 
 # Plot x vs y, x vs t, y vs t
-#MAKE FEATURES AXES ETC
 plt.plot(t, x_earth)
 plt.show()
+
 plt.plot(t, x_jupiter)
 plt.show()
+
 plt.plot(t, y_earth)
 plt.show()
+
 plt.plot(t, y_jupiter)
 plt.show()
+
 plt.plot(x_earth, y_earth)
 plt.show()
+
 plt.plot(x_jupiter, y_jupiter)
