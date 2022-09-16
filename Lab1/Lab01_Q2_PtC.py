@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
+'''
 
-# This code is for Lab 01, Question 2, Part C. The Euler-Cromer method is implemented to simulate the orbit of an asteroid in an asteroid-Sun-Jupiter
-# system. The simulation duration is 20 Earth years. The initial conditions for the position and velocity parameters of Jupiter have been retained 
-# from Part A of Question 2 of Lab 01. The output of the code is plots of x-position vs time, y-position vs time, and x-position vs y-position (phase)
-# of the asteroid and Jupiter. This code was written by Dharmik Patel and Bryan Owens together.
+This code is for Lab 01, Question 2, Part C. The Euler-Cromer method is implemented to simulate the orbit of an asteroid in an asteroid-Sun-Jupiter
+system. The simulation duration is 20 Earth years. The initial conditions for the position and velocity parameters of Jupiter have been retained 
+from Part A of Question 2 of Lab 01. The output of the code is plots of x-position vs time, y-position vs time, and x-position vs y-position (phase)
+of the asteroid and Jupiter. This code was written by Dharmik Patel and Bryan Owens together.
+
+'''
 
 # In[1]:
 
