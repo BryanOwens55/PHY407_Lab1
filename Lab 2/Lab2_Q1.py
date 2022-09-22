@@ -17,19 +17,21 @@ def Mean(lst):
 
 def STD1(lst):
     mean = Mean(lst)
-    sum = 0
+    sum1 = 0
     for i in range(len(lst)):
-        sum += (lst[i] - mean)**2
-    return np.sqrt(sum/(len(lst-1)))
+        sum1 += (lst[i] - mean)**2
+    return np.sqrt(sum1/(len(lst)-1))
 
 def STD2(lst):
-    mean = Mean(lst)
-    sum = 0
+    mean = 0
+    sum2 = 0
     n = len(lst)
     for i in range(len(lst)):
-        sum += lst[i]**2
-    sum -= n*mean**2
-    return np.sqrt(abs(sum/(len(lst-1))))
+        sum2 += lst[i]**2
+        mean += lst[i]
+    mean = mean/len(lst)
+    sum2 -= n*mean**2
+    return np.sqrt(abs(sum2/(len(lst)-1)))
 
 
 
@@ -37,8 +39,9 @@ def STD2(lst):
 def Error(x, y):
     return (x - y) / y
 
-#print(Error(STD2(SoL), np.std(SoL)), Error(STD1(SoL), np.std(SoL)))
-
+print(np.std(SoL, ddof=1), STD1(SoL))
+print(Error(STD2(SoL), np.std(SoL, ddof=1)), Error(STD1(SoL), np.std(SoL, ddof=1)))
+print(STD2(SoL))
 
 # PART C
 
@@ -61,11 +64,17 @@ def STD3(lst):
     for i in range(len(lst)):
         sum += lst[i]**2 - 2*lst[i]*mean
     sum += n*mean**2
-    return np.sqrt(abs(sum/(len(lst-1))))
+    return np.sqrt(abs(sum/(len(lst)-1)))
+
+
+
+
+print()
+print(Error(STD3(SoL), np.std(SoL, ddof=1)), Error(STD1(SoL), np.std(SoL, ddof=1)))
 
 
 
 
 
-print(Error(STD3(SoL), np.std(SoL)), Error(STD2(SoL), np.std(SoL)))
+
 
