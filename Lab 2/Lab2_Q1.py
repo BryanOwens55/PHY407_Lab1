@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 """
-Prupose: To calculate and study the formulae of standard deviation
+Authors: Bryan Owens and Dharmik Patel.
+
+Purpose: To calculate and study two formulae for standard deviation. 
+
 """
 
 SoL = np.loadtxt('cdata.txt') # Speed of light data; 10^3 km/s
