@@ -1,7 +1,7 @@
 '''
 Authors: Bryan Owens, Dharmik Patel
 Purpose: To study the trapezoidal and Simpson methods of integration
-Collaberation: Code was evenly created and edited by both lab partners
+Collaboration: Code was evenly created and edited by both lab partners
 '''
 
 # Import numpy and the time function
