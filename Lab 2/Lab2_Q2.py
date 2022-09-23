@@ -13,7 +13,7 @@ from time import time
 def f(x):
 	return 4/(1+x**2)
 
-n = 12 # 4 for Simpson, 12 for Trapezoidal
+n = 2 # 4 for Simpson, 12 for Trapezoidal
 N = 2**n
 a = 0
 b = 1
