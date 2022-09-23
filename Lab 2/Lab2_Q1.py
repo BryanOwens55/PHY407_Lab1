@@ -1,7 +1,7 @@
 """
 Authors: Bryan Owens, Dharmik Patel
 Purpose: To calculate and study the formulae of standard deviation
-Collaberation: Code was evenly created and edited by both lab partners
+Collaboration: Code was evenly created and edited by both lab partners
 """
 
 # Import numpy and the speed of light data file
