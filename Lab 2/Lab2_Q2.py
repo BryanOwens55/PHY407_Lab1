@@ -1,51 +1,73 @@
-# Imports
+
 import numpy as np
 import matplotlib.pyplot as plt
 from time import time
 
 
 
-sizes = np.arange(2, 200, 1)
-times = np.zeros(len(sizes))
 
-for i in range(len(sizes)):
-    A = np.ones([i,i])*3
-    B = np.ones([i,i])*3
-    C = np.zeros([i,i])
-    start = time()
-    for j in range(len(C)): 
-        for k in range(len(C)): 
-            for l in range(len(C)): 
-                C[j,k] += A[j,l]*B[l,k]
-    end = time()
-    times[i] = end - start
-
-print(times)
-plt.plot(sizes, times)
-plt.xlabel('Size of array (NxN)')
-plt.ylabel('Time to square matrix')
-plt.title('Size of array vs multiplication time')
-plt.show()
+# PART B
 
 
 
-times = times * 0
+def f(x):
+	return 4/(1+x**2)
 
-for i in range(len(sizes)):
-    A = np.ones([i,i])*3
-    B = np.ones([i,i])*3
-    C = np.zeros([i,i])
-    start = time()
-    C = np.dot(A,B)
-    end = time()
-    times[i] = end - start
+n = 12 # 4 for Simpson, 12 for Trapezoidal
+N = 2**n
+a = 0
+b = 1
+delta_x = (b-a)/N
+
+def Trapezoidal(N):
+	s = 0.5*f(a) + 0.5*f(b)
+	for i in range(1, N):
+		s += f(a + i*delta_x)
+	return s * delta_x
 
 
 
-print(times)
-plt.plot(sizes, times)
-plt.xlabel('Size of array (NxN)')
-plt.ylabel('Time to square matrix')
-plt.title('Size of array vs multiplication time')
-plt.show()
+def Simpson(N):
+	s = f(a) + f(b)
+	for i in range(1, N):
+		if i % 2 == 0:
+			#print(2*f(a + i*delta_x))
+			s += 2*(f(a + i*delta_x))
+		else:
+			#print(4*f(a + i*delta_x))
+			s += 4*(f(a + i*delta_x))
+	return s * delta_x/ 3
+
+
+print(abs(Trapezoidal(N) - np.pi), abs(Simpson(N) - np.pi))
+
+
+# PART C
+
+## 4 for Simpson, 12 for Trapezoidal
+
+start  = time()
+for i in range(200):
+	Trapezoidal(2**12)
+end = time()
+print(end - start)
+
+start  = time()
+for i in range(200):
+	Simpson(2**4)
+end = time()
+print(end - start)
+
+
+# PART D
+
+N_2 = 32
+N_1 = 16
+
+epsilon_1 = (Trapezoidal(N_2) - Trapezoidal(N_1)) / 3
+
+#print(epsilon_1)
+
+
+
 
