@@ -1,7 +1,7 @@
 '''
 Authors: Bryan Owens, Dharmik Patel
 Purpose: To study the effect of round off errors in summations and in products
-Collaberation: Code was evenly created and edited by both lab partners
+Collaboration: Code was evenly created and edited by both lab partners
 '''
 
 # Import Functions
