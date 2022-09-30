@@ -27,13 +27,36 @@ def Error(answer):
 
 
 
+# Part A
 
 
 answer, h = Forward(0.5, 17)
 err = abs(Error(answer))
+print(answer, h, err)
+
+
+
+# Part B
+
+
 plt.loglog(h, err)
+plt.ylabel('Error of derivative')
+plt.xlabel('Value of h used in derivative calculation')
+plt.title('Error vs h Value (using forward derivative)')
+plt.show()
 
 
+C = 1e-16
+epsilon = 2*C*abs(F(0.5))/h + 0.5*abs(-0.7788007830714049)*h
+plt.loglog(h, epsilon)
+plt.ylabel('Error of derivative')
+plt.xlabel('Value of h used in derivative calculation')
+plt.title('Error vs h Value (using equation 5.91 from textbook)')
+plt.show()
+
+
+
+# Part C
 
 
 def Centred(x, n):
@@ -44,10 +67,15 @@ def Centred(x, n):
         answer[i] = (abs(F(x + h[i]) - F(x - h[i]))/(x + h[i] - (x - h[i])))
     return answer, h
 
-answer, h = Centred(0.5, 17)
-err = abs(Error(answer))
-plt.loglog(h, err)
+answer2, h2 = Centred(0.5, 17)
+err2 = abs(Error(answer2))
 
+plt.loglog(h, err)
+plt.ylabel('Error of derivative')
+plt.xlabel('Value of h used in derivative calculation')
+plt.title('Error vs h Value (using central and forward derivative)')
+plt.loglog(h2, err2)
+plt.legend(['Forward difference scheme', 'Central difference scheme'])
 
 
 
