@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 a = 10 # eV
-L = 5e-10 # Meters           Angstroms
+L = 5 #e-10 # Meters           Angstroms
 h = 6.582e-16  # eV*s
 M = 0.5109989461 # eV/c^2       #9.1094e-31 kg
 
@@ -41,7 +41,8 @@ plt.plot(x, v[:,2])
 plt.show()
 
 
-#print(np.linalg.eigvalsh(H_matrix))
+print(np.linalg.eigvalsh(H_matrix))
+print()
     
 
 def Normalization(Psi):
@@ -57,10 +58,17 @@ def Normalization(Psi):
 
 
 A = Normalization(v[:,0])
+B = Normalization(v[:,1])
+C = Normalization(v[:,2])
 
 
 plt.plot(x, v[:,0] / np.sqrt(A))
+plt.plot(x, v[:,1] / np.sqrt(Normalization(v[:,1])))
+plt.plot(x, v[:,2] / np.sqrt(Normalization(v[:,2])))
+plt.show()
 
 
-print(Normalization(v[:,0]/np.sqrt(A)))
-
+plt.plot(x, v[:,0]**2 / A)
+plt.plot(x, v[:,1]**2 / Normalization(v[:,1]))
+plt.plot(x, v[:,2]**2 / Normalization(v[:,2]))
+plt.show()
