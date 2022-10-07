@@ -1,6 +1,9 @@
-
-
-
+'''
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To study three methods for silving linear equations: Gaussian
+Elimination, Partial Pivot, and LU decomposition
+Collaboration: Code was evenly created and edited by both lab partners
+'''
 
 # SolveLinear.py
 # Python module for PHY407
