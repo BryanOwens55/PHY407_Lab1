@@ -1,3 +1,7 @@
+
+
+
+
 # SolveLinear.py
 # Python module for PHY407
 # Paul Kushner, 2015-09-26
@@ -59,8 +63,10 @@ def PartialPivot(A_in, v_in):
     N = len(v)
     
     for m in range(N):
-        # Find the row with greatest value at 
+        # Find the row with greatest value at the mth column from
+        # row m and below
         flip = argmax(abs(A[m:,m]))+m
+        # Now flip the two rows for both the matrix A and the matrix v
         A[[m, flip]] = A[[flip,m]]
         v[[m, flip]] = v[[flip,m]]
 
@@ -84,13 +90,13 @@ def PartialPivot(A_in, v_in):
             x[m] -= A[m, i]*x[i]
     return x
 
-
+# Method that uses scipy solve to calculate x using LU decomposition
 def LU(A, v):
     return solve(A, v)
 
 
 
-
+# Same array from example 6.2
 A = array([[2,  1,  4,  1],
               [3,  4, -1, -1],
               [1, -4,  1,  5],
@@ -98,6 +104,8 @@ A = array([[2,  1,  4,  1],
 
 v = array([-4, 3, 9, 7], float)
 
+# Print the value that is calculated by both the Gauss Elimination method and
+# the Partial Pivot method
 print(PartialPivot(A, v))
 print(GaussElim(A, v))
 
@@ -106,6 +114,8 @@ print(GaussElim(A, v))
 
 # Part B
 
+# Method that calulates the run-time and the error of the three different methods
+# for a range of matrix sizes 1 to N
 def Timing(N):
     gauss_times = np.zeros(N)
     pivot_times = np.zeros(N)
@@ -114,6 +124,7 @@ def Timing(N):
     err2 = np.zeros(N)
     err3 = np.zeros(N)
     
+    # for loop to calculate the run-times and errors of a matrix of size i
     for i in range(1, N):
         A = np.random.randint(9, size=(N, N))
         v = np.random.randint(9, size=(N))
@@ -135,7 +146,8 @@ def Timing(N):
         end = time()
         LU_times[i] = end - start
         err3[i] = np.mean(abs(v - np.dot(A, x3)))
-       
+     
+    # Plot the errors on a log-log plot
     plt.loglog(err1)
     plt.loglog(err2)
     plt.loglog(err3)
@@ -146,6 +158,7 @@ def Timing(N):
     plt.show()
     return pivot_times, gauss_times, LU_times
 
+# Plot the run-times on a log-log plot
 times1, times2, times3 = Timing(50)
 plt.plot(times1)
 plt.plot(times2)
