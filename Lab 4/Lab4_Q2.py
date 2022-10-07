@@ -1,3 +1,9 @@
+'''
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To study the asymetric quantum well, and to study
+numerical mthod for solving eigenvalue/eigenvector equations
+Collaboration: Code was evenly created and edited by both lab partners
+'''
 # Import numpy, matplotlib, scipy
 import numpy as np
 import matplotlib.pyplot as plt
