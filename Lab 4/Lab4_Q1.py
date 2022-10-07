@@ -114,7 +114,7 @@ def Timing(N):
     err2 = np.zeros(N)
     err3 = np.zeros(N)
     
-    for i in range(N):
+    for i in range(1, N):
         A = np.random.randint(9, size=(N, N))
         v = np.random.randint(9, size=(N))
         
@@ -140,13 +140,20 @@ def Timing(N):
     plt.loglog(err2)
     plt.loglog(err3)
     plt.legend(['Pivot', 'Gauss', 'LU'])
+    plt.xlabel('NxN size of matrix A')
+    plt.ylabel('Error')
+    plt.title('Error vs size of matrix')
+    plt.show()
     return pivot_times, gauss_times, LU_times
 
 times1, times2, times3 = Timing(50)
-#plt.plot(times1)
-#plt.plot(times2)
-#plt.plot(times3)
-#plt.legend(['Pivot', 'Gauss'])
+plt.plot(times1)
+plt.plot(times2)
+plt.plot(times3)
+plt.legend(['Pivot', 'Gauss', 'LU'])
+plt.xlabel('NxN size of matrix A')
+plt.ylabel('Runtime')
+plt.title('Runtime vs size of matrix')
 
 
 
