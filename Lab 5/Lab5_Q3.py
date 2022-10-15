@@ -25,20 +25,34 @@ plt.show()
 
 frequency = np.fft.rfft2(SLP)
 
+'''
 for i in range(len(frequency)):
     if i != 3 and i != 5:
         frequency[i] = 0
-plt.plot(abs(frequency))
-plt.xlim(0,10)
+#plt.plot(abs(frequency))
+#plt.xlim(0,10)
+#plt.show()
+'''
+
+
+
+
+frequency3 = frequency * 0
+frequency3[:,3] = frequency[:,3]
+
+print(frequency, frequency3[0])
+
+frequency5 = frequency * 0
+frequency5[:,5] = frequency[:,5]
+
+z = np.fft.irfft2(frequency)
+
+z3 = np.fft.irfft2(frequency3)
+z5 = np.fft.irfft2(frequency5)
+
+contourf(Longitude, Times, z3)
 plt.show()
-
-
-z = np.fft.irfft(frequency)
-z3 = z[3]
-z5 = z[5]
-print(z3)
-contourf(Longitude, Times, z)
+contourf(Longitude, Times, z5)
 
 newSLP = np.copy(SLP)
-
 
