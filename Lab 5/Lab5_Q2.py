@@ -25,8 +25,6 @@ N_Points = len(channel_0)
 
 # Plot the two channels of the audio file
 lst = np.linspace(0, N_Points/sample, len(channel_0))
-
-
 fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
 fig.subplots_adjust(hspace=0.4)
 ax1.plot(lst, channel_0)
