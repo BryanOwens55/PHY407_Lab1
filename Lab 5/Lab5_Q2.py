@@ -73,6 +73,7 @@ plt.ylabel('Amplitude')
 plt.xlim(0)
 plt.show()
 
+# Plot the fourier coefficients for the two audio channels
 fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
 fig.subplots_adjust(hspace=0.4)
 ax1.plot(f_axis, abs(frequency1))
@@ -89,20 +90,22 @@ plt.show()
 
 
 
-
+# Calculate what index the frequency is greater than 880Hz 
 freq_range = (np.where(f_axis > 880)[0][0], np.where(f_axis < -880)[0][-1]+1)
 
+# Set appropriate coefficients to 0
 frequency1[freq_range[0]:] = 0
 frequency1[:freq_range[1]] = 0
 
 frequency2[freq_range[0]:] = 0
 frequency2[:freq_range[1]] = 0
 
+# Inverse the Fourier transform
 channel_0_out = np.fft.ifft(np.fft.ifftshift(frequency1))
 channel_1_out = np.fft.ifft(np.fft.ifftshift(frequency2))
 
 
-
+# Plot the new audio channels 
 fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
 fig.subplots_adjust(hspace=0.4)
 ax1.plot(lst, channel_0_out)
@@ -117,7 +120,7 @@ ax2.set_title('Frequency vs time, channel 1')
 plt.show()
 
 
-
+# Save the new audio file
 data_out = empty(data.shape, dtype = data.dtype)
 data_out[:, 0] = channel_0_out
 data_out[:, 1] = channel_1_out
