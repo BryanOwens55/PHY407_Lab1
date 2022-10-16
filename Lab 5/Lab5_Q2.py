@@ -110,11 +110,9 @@ ax1.plot(lst, channel_0_out)
 ax2.plot(lst, channel_1_out)
 ax1.set_ylabel('Frequency (Hz)')
 ax1.set_title('Frequency vs time, channel 0')
-
 ax2.set_xlabel('Time (seconds)')
 ax2.set_ylabel('Frequency (Hz)')
 ax2.set_title('Frequency vs time, channel 1')
-
 plt.show()
 
 
