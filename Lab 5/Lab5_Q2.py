@@ -98,7 +98,23 @@ frequency1[:freq_range[1]] = 0
 frequency2[freq_range[0]:] = 0
 frequency2[:freq_range[1]] = 0
 
-# Inverse the Fourier transform
+
+# Plot the fourier coefficients for the two audio channels
+fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
+fig.subplots_adjust(hspace=0.4)
+ax1.plot(f_axis, abs(frequency1))
+ax2.plot(f_axis, abs(frequency2))
+ax1.set_title('Frequency vs time, channel 0')
+ax1.set_ylabel('Fourier Coefficients')
+ax2.set_ylabel('Fourier Coefficients')
+ax2.set_xlabel('Frequency (Hz)')
+ax2.set_title('Frequency vs time, channel 1')
+ax1.set_xlim(0)
+ax2.set_xlim(0)
+plt.show()
+
+
+# Inverse the Fourier transform with frequencies > 880Hz removed
 channel_0_out = np.fft.ifft(np.fft.ifftshift(frequency1))
 channel_1_out = np.fft.ifft(np.fft.ifftshift(frequency2))
 
