@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Oct 11 15:54:03 2022
-
-@author: bryan
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To Fourier decompose a 2D list into two Fourier wavenumber 
+m = 3 and to m = 5
+Collaberation: Code was evenly created and edited by both lab partners
 """
 
 
