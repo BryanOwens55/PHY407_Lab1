@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
 """
-Created on Sat Oct  8 13:48:41 2022
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To removed frequencies greater than 880Hz from an audio file
+Collaberation: Code was evenly created and edited by both lab partners
+"""
 
-@author: bryan
-"""
 
 # import scipy, numpy, and matplotlib
 from scipy.io.wavfile import read, write
@@ -64,12 +64,7 @@ frequency2 = np.fft.fftshift(np.fft.fft(channel_1))
 # Calculate the x-axis of the fourier transform with the calculated time step
 f_axis = np.fft.fftshift(np.fft.fftfreq(len(channel_0), dt))
 
-# Plot the fourier transform of the two channels
-plt.plot(f_axis, abs(frequency1))
-plt.xlabel('Frequency (Hz)')
-plt.ylabel('Amplitude')
-plt.xlim(0)
-plt.show()
+
 
 # Plot the fourier coefficients for the two audio channels
 fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
@@ -139,3 +134,18 @@ data_out[:, 1] = channel_1_out
 write('GraviteaTime_lpf.wav', sample, data_out)
 
 
+# Plot the original audio file channels vs edited audio channels
+fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True)
+fig.subplots_adjust(hspace=0.4)
+ax1.plot(lst, channel_0)
+ax2.plot(lst, channel_1)
+ax1.plot(lst, channel_0_out)
+ax2.plot(lst, channel_1_out)
+ax1.legend(['Original', 'Edited'])
+ax2.legend(['Original', 'Edited'])
+ax1.set_ylabel('Frequency (Hz)')
+ax1.set_title('Frequency vs time, channel 0')
+ax2.set_xlabel('Time (seconds)')
+ax2.set_ylabel('Frequency (Hz)')
+ax2.set_title('Frequency vs time, channel 1')
+plt.show()
