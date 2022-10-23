@@ -24,10 +24,6 @@ def f(r,t):
     return np.array([fx,fy] ,float) 
 
 
-   # term1 = (48*epsilon*sigma**12)/((x-a)**2 + (y-b)**2)**13
-   # term2 = (24*epsilon*sigma**6)/((x-a)**2 + (y-b)**2)**7
-
-
 
 dt = 0.01
 time = np.arange(0,1000*dt,dt)
