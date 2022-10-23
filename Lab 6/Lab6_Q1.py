@@ -29,13 +29,6 @@ def f(r,t):
 
 
 
-
-a = 1
-b = 100
-N = 100
-h = (b-a)/N 
-tpoints = arange(a, b,h) 
-
 dt = 0.01
 time = np.arange(0,1000*dt,dt)
 
