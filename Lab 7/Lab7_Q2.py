@@ -1,3 +1,11 @@
+"""
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To calculate the energies and the eigenvector of the radial
+         component of the hydrogen atom for a given state n and l
+Collaberation: Code was evenly created and edited by both lab partners
+"""
+
+# Import methods
 from numpy import array,arange
 import numpy as np
 import matplotlib.pyplot as plt
