@@ -52,22 +52,23 @@ u_next[N] = 0#Tlo
 
 # Main loop 
 t = 0.0 
-C = h*D/(a*a) 
 plot(x,eta)
 show()
 while t<tend: 
     # Calculate the new values of T 
-    u_next[0] = (u[0] - u[1])/a
-    u_next[-1] = (u[-1] - u[-2])/a
-    u_next[1:N] = u[1:N] - h*((u[2:N+1] - u[0:N-1])/2 - g*(eta[2:N+1] - eta[0:N-1]))/(2*a) #+ C*(u[0:N-1]+u[2:N+1]-2*u[1:N])
-    u,u_next = u_next,u 
-    print(u)
+    u_next[0] = u[0] + (u[0] - u[1])/a
+    u_next[-1] = u[-1] + (u[-1] - u[-2])/a
+    u_next[1:N] = u[1:N] - h*((u[2:N+1]**2 - u[0:N-1]**2)/2 - g*(eta[2:N+1] - eta[0:N-1]))/(2*a)
+    
     eta_next[0] = (eta[0] - eta[1])/a
     eta_next[-1] = (eta[-1] - eta[-2])/a
     eta_next[1:N] = eta[1:N] - h*(u[2:N+1]*(eta[2:N+1] - eta_b) - u[0:N-1]*(eta[0:N-1] - eta_b))/(2*a)
+    
     eta,eta_next = eta_next,eta 
+    u,u_next = u_next,u 
     
     t += h 
+    
     # Make plots at the given times 
     if abs(t-t1)<epsilon: 
         print('hi')
