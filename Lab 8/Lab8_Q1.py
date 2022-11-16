@@ -1,28 +1,37 @@
+"""
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To solve Laplace's equation for an electronic capacitor
+Collaberation: Code was evenly created and edited by both lab partners
+"""
+# Imports
 from numpy import empty,zeros,max 
 from pylab import imshow,gray,show
 import matplotlib.pyplot as plt 
 from time import time
+
 # Constants 
-M = 100 
-V = 1.0 
+M = 100 # grid (M+1)x(M+1)
+V = 1.0 # Voltage
 target = 1e-6 
-omega = 0.1
+
 
 def potential(omega):
+    # Create initial condition
     phi = zeros([M+1,M+1] ,float) 
-    phi[20:-20,20] = V
+    phi[20:-20,20] = V 
     phi[20:-20,80] = -V 
-    #phiprime = empty([M+1,M+1] ,float) 
     
     # Main loop 
     delta = 1.0 
     while delta>target: 
-        # Calculate new values of 
+        # Save old values
         old = phi.copy()
         for i in range(M+1): 
-            for j in range(M+1): 
+            for j in range(M+1):
+                # If at boundaries
                 if i==0 or i==M or j==0 or j==M: 
                     phi[i,j] = phi[i,j] 
+                # If at capacitor
                 elif 80>=i>=20 and j==20:
                     phi[i,j] = phi[i,j]
                 elif 80>=i>=20 and j==80:
@@ -31,8 +40,8 @@ def potential(omega):
                     phi[i,j] = (1+omega)*(phi[i+1,j] + phi[i-1,j] + phi[i,j+1] + phi[i,j-1])/4 - phi[i,j]*omega
         # Calculate maximum difference from old values 
         delta = max(abs(old-phi))
-        #print(delta)
-    
+
+    # Plot solution
     fig = plt.figure(figsize=(6, 3))
     potential = plt.contourf(phi)
     plt.title('Potential of an Electronic Capacitor')
@@ -46,7 +55,7 @@ def potential(omega):
 
 
 # Part a
-# Running the code with no over-relaxation
+# Running the code with no over-relaxation (omega = 0)
 start = time()
 potential(0)
 print(time() - start)
