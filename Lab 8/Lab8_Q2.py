@@ -1,8 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-
-
+"""
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To simulate the shallow water system using the FTCS method
+Collaberation: Code was evenly created and edited by both lab partners
+"""
+# Imports
 from numpy import empty 
 import numpy as np
 from pylab import plot,xlabel,ylabel,show, ylim, xlim, clf, pause, draw
