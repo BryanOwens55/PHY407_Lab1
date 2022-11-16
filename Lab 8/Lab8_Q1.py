@@ -33,16 +33,33 @@ def potential(omega):
         delta = max(abs(old-phi))
         #print(delta)
     
-    plt.contourf(phi) 
+    fig = plt.figure(figsize=(6, 3))
+    potential = plt.contourf(phi)
+    plt.title('Potential of an Electronic Capacitor')
+    plt.xlabel('$x$')
+    plt.ylabel('$y$')
+    cbar = fig.colorbar(potential)
+    cbar.set_label('Potential $V$')
     gray() 
     show() 
     return
 
+
+# Part a
+# Running the code with no over-relaxation
+start = time()
+potential(0)
+print(time() - start)
+
+# Part b
+# Running the code with over-relaxation, and with omega = 0.1, 0.5
+
 start = time()
 potential(0.1)
 print(time() - start)
 
 start = time()
-potential(0.1)
+potential(0.5)
 print(time() - start)
+
 
