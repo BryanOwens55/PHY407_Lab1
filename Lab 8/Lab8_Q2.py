@@ -112,20 +112,3 @@ while t<tend:
 
 show() 
 
-
-
-
-
-'''
-clf()
-plt.title("Shallow Water Simulation t=" + str(round(t,3)),fontsize=16)
-plt.xlabel("Spatial Dimension (m)",fontsize=14)
-plt.ylabel("Free Surface Altitude",fontsize=14)
-plt.plot(x,eta,marker='o',c='g')
-plt.fill_between(x,y1=0,y2=eta,color='b',alpha=0.4)
-plt.ylim([0,0.02])
-plt.tight_layout()
-
-draw()
-pause(0.001)
-'''
