@@ -36,11 +36,3 @@ def idXXt2(b):
             # iDXT a[:,j] and set as f[:,j]
             f[:,j] = dcst.idct(a[:,j]) / dcst.idst(a[:,j])
             return f
-
-
-
-
-
-a = np.array([[0.1,0.2,0.3],[0.1,0.2,0.3]])
-
-print(idXXt2(dXXt2(a)))
