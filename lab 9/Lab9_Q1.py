@@ -157,7 +157,6 @@ plt.ylabel("Energy (J)")
 plt.ylim(1e-17,2e-17)
 plt.show()
 
-#plt.figure(figsize=(10,7))
 plt.plot(t, norm_array)
 plt.title("Wavefunction Normalization vs Time")
 plt.xlabel("Time (s)")
