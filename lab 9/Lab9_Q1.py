@@ -89,12 +89,6 @@ print(H_matrix)
 
 
 
-# Initialize L matrix
-# L_matrix = 1j*(tau/(2*sc.hbar))*H_matrix + np.identity(P-1)
-
-# Initialize R matrix
-# R_matrix = -1j*(tau/(2*sc.hbar))*H_matrix + np.identity(P-1)
-
 I = np.diag(np.full(P-1, 1.0), 0)
 i = complex(0,1) 
 L_matrix = I + (i*tau/(2*sc.hbar))*H_matrix
@@ -127,6 +121,7 @@ def Expectation(phi):
 
 energy_array = [Energy(psi[:,0])]
 norm_array = [Norm(psi[:,0])]
+expectation_array = [Expectation(psi[:,0])]
 
 
 for i in range(N-1):
@@ -140,11 +135,12 @@ for i in range(N-1):
     psi[:,i+1] = psi[:,i+1]/norm
     norm_array.append(norm)
     energy_array.append(Energy(psi[:,i+1]))
+    expectation_array.append(Expectation(psi[:,i+1]))
     
-    print("{} %".format((i/(N-1))*100))
+    print((i/(N-1))*100)
 
 
-def pdf(Psi):
+def complex_square(Psi):
     return np.real(np.conj(Psi)*Psi)
 
 
@@ -152,30 +148,37 @@ t = np.arange(0, N*tau, tau)
 
 
 plt.figure(figsize=(10,7))
-plt.plot(x, pdf(psi[:,0]), label = "$t = 0$")
-#plt.plot(x, pdf(psi[:,350]), label = "$t = 0->T/4$")
-plt.plot(x, pdf(psi[:,750]), label = "$t = T/4$")
-#plt.plot(x, pdf(psi[:,900]), label = "$t = T/4->T/2$")
-plt.plot(x, pdf(psi[:,1500]), label = "$t = T/2$")
-plt.plot(x, pdf(psi[:,N-1]), label = "$t = T$")
+plt.plot(x, complex_square(psi[:,0]), label = "$t = 0$")
+plt.plot(x, complex_square(psi[:,750]), label = "$t = T/4$")
+plt.plot(x, complex_square(psi[:,1500]), label = "$t = T/2$")
+plt.plot(x, complex_square(psi[:,2250]), label = "$t = 3T/4$")
+plt.plot(x, complex_square(psi[:,N-1]), label = "$t = T$")
 plt.xlabel("x (m)")
 plt.ylabel("$|\psi(x,t)|^2$")
 plt.title("Probability Density")
-plt.grid()
 plt.legend()
+plt.show()
+
+plt.figure(figsize=(10,7))
+plt.plot(t, expectation_array)
+plt.title("Wavefunction Expectation value vs. Time")
+plt.xlabel("Time (s)")
+plt.ylabel("Expectation Value (m)")
+plt.show()
 
 plt.figure(figsize=(10,7))
 plt.plot(t, energy_array)
 plt.title("Energy vs. Time")
 plt.xlabel("Time (s)")
 plt.ylabel("Energy (J)")
-plt.grid()
+plt.xlim(0,0.5e-15)
+plt.show()
 
 plt.figure(figsize=(10,7))
 plt.plot(t, norm_array)
 plt.title("Wavefunction Normalization vs. Time")
 plt.xlabel("Time (s)")
 plt.ylabel("Normalization")
-plt.grid()
+plt.show()
 
-
+print(energy_array)
