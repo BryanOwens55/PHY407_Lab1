@@ -1,3 +1,9 @@
+"""
+Authors: Bryan Owens, Dharmik Patel
+Purpose: To compute and integral using two different methods, 
+         importance sampling method and mean value method
+Collaberation: Code was evenly created and edited by both lab partners
+"""
 # Imports
 from random import random 
 import numpy as np 
@@ -22,7 +28,7 @@ def Mean_value():
     return I
 
 
-# Method to calculate integral value using mean value method
+# Method to calculate integral value using importance sampling method
 def Imp_Sampling():
     b = 1
     a = 0
