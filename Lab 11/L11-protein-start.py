@@ -47,6 +47,8 @@ font = {'family': 'DejaVu Sans', 'size': 14}  # adjust fonts
 rc('font', **font)
 dpi = 150
 
+
+# Part a and b -----------------------------------------------------------------------
     
 def main(eps, N, T, n):
     energy_array = np.zeros(n)  # initialize array to hold energy
